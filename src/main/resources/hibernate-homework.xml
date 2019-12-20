@@ -40,4 +40,8 @@
 			<property name="sessionFactory" ref="sessionFactory"></property>
 			</bean>
 			
+			<bean id="policyRepository" class="com.hibernate.homework.repositories.PolicyRepository">
+			<property name="sessionFactory" ref="sessionFactory"></property>
+			</bean>
+			
 </beans>

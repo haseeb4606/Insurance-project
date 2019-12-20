@@ -11,34 +11,34 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="address")
+@Table(name = "address")
 public class AddressEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private long id;
-	
-	@Column(name="street1")
+
+	@Column(name = "street1")
 	private String street;
-	
-	@Column(name="street2")
+
+	@Column(name = "street2")
 	private String street2;
-	
-	@Column(name="city")
+
+	@Column(name = "city")
 	private String city;
-	
-	@Column(name="state")
+
+	@Column(name = "state")
 	private String state;
-	
-	@Column(name="zipcode")
-	private String zipcode;
-	
-	@Column(name="type")
+
+	@Column(name = "zipcode")
+	private long zipcode;
+
+	@Column(name = "type")
 	private String type;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="customer_id")
+	@JoinColumn(name = "customer_id")
 	CustomerEntity customer;
 
 	public long getId() {
@@ -81,11 +81,11 @@ public class AddressEntity {
 		this.state = state;
 	}
 
-	public String getZipcode() {
+	public long getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(String zipcode) {
+	public void setZipcode(long zipcode) {
 		this.zipcode = zipcode;
 	}
 
@@ -96,7 +96,14 @@ public class AddressEntity {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
+
+	public CustomerEntity getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(CustomerEntity customer) {
+		this.customer = customer;
+	}
+
 	
 }
