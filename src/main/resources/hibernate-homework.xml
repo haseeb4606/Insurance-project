@@ -22,6 +22,8 @@
 				<value>com.hibernate.homewokr.entities.AddressEntity</value>
 				<value>com.hibernate.homewokr.entities.CustomerEntity</value>
 				<value>com.hibernate.homewokr.entities.PolicyEntity</value>
+				<value>com.hibernate.homewokr.entities.VehicleEntity</value>
+				<value>com.hibernate.homewokr.entities.DriverEntity</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
