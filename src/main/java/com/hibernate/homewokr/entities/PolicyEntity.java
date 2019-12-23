@@ -1,17 +1,22 @@
 package com.hibernate.homewokr.entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="policy")
+@Table(name = "policy")
 public class PolicyEntity {
 
 	@Id
@@ -34,9 +39,15 @@ public class PolicyEntity {
 	@Column(name = "price")
 	private String price;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id")
 	private CustomerEntity customer;
+
+	@OneToMany(mappedBy = "policy", cascade = CascadeType.ALL)
+	private List<DriverEntity> driver;
+
+	@OneToMany(mappedBy = "policy",cascade = CascadeType.ALL)
+	private List<VehicleEntity> vehicle;
 
 	public long getId() {
 		return id;
@@ -92,6 +103,12 @@ public class PolicyEntity {
 
 	public void setCustomer(CustomerEntity customer) {
 		this.customer = customer;
+	}
+
+	@Override
+	public String toString() {
+		return "PolicyEntity [id=" + id + ", policyType=" + policyType + ", policyNo=" + policyNo + ", startDate="
+				+ startDate + ", expiration=" + expiration + ", price=" + price + ", customer=" + customer + "]";
 	}
 
 }

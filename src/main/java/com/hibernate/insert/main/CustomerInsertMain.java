@@ -20,14 +20,13 @@ public class CustomerInsertMain {
 		
 		AddressEntity address = new AddressEntity();
 		
-		address.setStreet("177 YellowStone Dr");
-		address.setCity("Charlottesville");
-		address.setState("VA");
-		address.setZipcode(22903);
-		address.setType("Residentional");
-		address.setCustomer(cust);
-		
-		cr.saveAddress(address);
+		/*
+		 * address.setStreet("177 YellowStone Dr"); address.setCity("Charlottesville");
+		 * address.setState("VA"); address.setZipcode(22903);
+		 * address.setType("Residentional"); address.setCustomer(cust);
+		 * 
+		 * cr.saveAddress(address);
+		 */
 		
 		
 		
