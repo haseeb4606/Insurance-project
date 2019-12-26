@@ -100,4 +100,11 @@ public class VehicleEntity {
 		this.policy = policy;
 	}
 
+	@Override
+	public String toString() {
+		return "VehicleEntity [id=" + id + ", make=" + make + ", model=" + model + ", year=" + year + ", color=" + color
+				+ ", vinNo=" + vinNo + ", isActive=" + isActive + ", policy=" + policy + "]";
+	}
+
+	
 }

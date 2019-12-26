@@ -53,6 +53,27 @@ public class PolicyEntity {
 		return id;
 	}
 
+	
+	public List<DriverEntity> getDriver() {
+		return driver;
+	}
+
+
+	public void setDriver(List<DriverEntity> driver) {
+		this.driver = driver;
+	}
+
+
+	public List<VehicleEntity> getVehicle() {
+		return vehicle;
+	}
+
+
+	public void setVehicle(List<VehicleEntity> vehicle) {
+		this.vehicle = vehicle;
+	}
+
+
 	public void setId(long id) {
 		this.id = id;
 	}
