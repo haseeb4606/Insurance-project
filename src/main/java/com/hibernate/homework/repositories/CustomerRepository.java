@@ -2,6 +2,7 @@ package com.hibernate.homework.repositories;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -33,6 +34,23 @@ public class CustomerRepository {
 		
 		CustomerEntity cust = (CustomerEntity) session.get(CustomerEntity.class, id);
 		session.getTransaction().commit();
+		session.close();
+		
+		return cust;
+	}
+	
+	public List<CustomerEntity> getAll(CustomerEntity customer) {
+		
+		Session session = sessionFactory.openSession();
+		
+		session.beginTransaction();
+		
+		Query query = session .createQuery("from CustomerEntity");
+		
+		List<CustomerEntity> cust = query.list();
+		
+		session.getTransaction().commit();
+		
 		session.close();
 		
 		return cust;

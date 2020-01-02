@@ -3,6 +3,7 @@ package com.hibernate.homewokr.entities;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class DriverEntity {
 	@Column(name = "is_active")
 	private boolean isActive;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "policy_id")
 	private PolicyEntity policy;
 
@@ -95,4 +96,11 @@ public class DriverEntity {
 		this.policy = policy;
 	}
 
+	@Override
+	public String toString() {
+		return "DriverEntity [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", licenceNo="
+				+ licenceNo + ", licenceState=" + licenceState + ", isActive=" + isActive  + "]";
+	}
+
+	
 }

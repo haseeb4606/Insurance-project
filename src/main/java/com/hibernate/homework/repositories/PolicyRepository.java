@@ -14,6 +14,21 @@ public class PolicyRepository {
 
 	private SessionFactory sessionFactory;
 
+	public PolicyEntity updatePlicy(PolicyEntity policy) {
+
+		Session session = sessionFactory.openSession();
+
+		session.beginTransaction();
+
+		PolicyEntity po = (PolicyEntity) session.merge(policy);
+
+		session.getTransaction().commit();
+
+		session.close();
+
+		return po;
+	}
+	
 	public void saveInfo(PolicyEntity policy) {
 
 		Session session = sessionFactory.openSession();
@@ -26,6 +41,7 @@ public class PolicyRepository {
 
 		session.close();
 
+		
 	}
 
 	public PolicyEntity getById(long id) {
@@ -56,6 +72,21 @@ public class PolicyRepository {
 		session.close();
 
 	}
+	
+	public DriverEntity updateDriver(DriverEntity driver) {
+
+		Session session = sessionFactory.openSession();
+
+		session.beginTransaction();
+
+		DriverEntity drive = (DriverEntity) session.merge(driver);
+
+		session.getTransaction().commit();
+
+		session.close();
+
+		return drive;
+	}
 
 	public void addVehicle(VehicleEntity vehicle) {
 
@@ -66,7 +97,7 @@ public class PolicyRepository {
 
 		session.getTransaction().commit();
 
-		session.clear();
+		session.close();
 
 	}
 
@@ -84,6 +115,35 @@ public class PolicyRepository {
 		session.close();
 
 		return ve;
+	}
+
+	public PolicyEntity getPolicyById(long id) {
+
+		Session session = sessionFactory.openSession();
+
+		session.beginTransaction();
+
+		PolicyEntity policy = (PolicyEntity) session.get(PolicyEntity.class, id);
+
+		session.getTransaction().commit();
+		session.close();
+
+		return policy;
+	}
+
+	public DriverEntity getDriver(String firstName) {
+
+		Session session = sessionFactory.openSession();
+
+		session.beginTransaction();
+
+		Query q = session.createQuery("select d from DriverEntity d where d.firstName =:firstName");
+		q.setParameter("firstName", firstName);
+		List <DriverEntity> driver = q.list();
+		session.getTransaction().commit();
+		session.close();
+
+		return driver.get(0);
 	}
 
 	public SessionFactory getSessionFactory() {

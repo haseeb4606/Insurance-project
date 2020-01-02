@@ -127,4 +127,11 @@ public class CustomerEntity {
 		this.address = address;
 	}
 
+	@Override
+	public String toString() {
+		return "CustomerEntity [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", phone=" + phone + ", gender=" + gender + ", lastFourSsn=" + lastFourSsn + ", dob=" + dob + "]";
+	}
+
+	
 }
